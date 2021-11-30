@@ -20,7 +20,9 @@ GiftCardResponse _$GiftCardResponseFromJson(Map<String, dynamic> json) =>
       json['terms'] as String,
       json['importantContent'] as String,
       json['cardTypeStatus'] as String,
-      json['customDenominations'] as String,
+      (json['customDenominations'] as List<dynamic>?)
+          ?.map((e) => Denomination.fromJson(e as Map<String, dynamic>))
+          .toList(),
       json['disclaimer'] as String,
     );
 
@@ -41,14 +43,14 @@ Map<String, dynamic> _$GiftCardResponseToJson(GiftCardResponse instance) =>
     };
 
 Denomination _$DenominationFromJson(Map<String, dynamic> json) => Denomination(
-      (json['price'] as num).toDouble(),
-      json['currency'] as String,
-      json['stock'] as String,
+      const PriceFormatConverter().fromJson(json['price']),
+      json['currency'] as String?,
+      json['stock'] as String?,
     );
 
 Map<String, dynamic> _$DenominationToJson(Denomination instance) =>
     <String, dynamic>{
-      'price': instance.price,
+      'price': const PriceFormatConverter().toJson(instance.price),
       'currency': instance.currency,
       'stock': instance.stock,
     };

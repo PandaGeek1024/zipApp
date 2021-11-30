@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:zip_app/data/entity/price_format_converter.dart';
 import 'package:zip_app/domain/data/gift_card.dart' as data;
 
 part 'gift_card_response.g.dart';
@@ -15,7 +16,7 @@ class GiftCardResponse {
   final String terms;
   final String importantContent;
   final String cardTypeStatus;
-  final String customDenominations;
+  final List<Denomination>? customDenominations;
   final String disclaimer;
 
   GiftCardResponse(this.id,
@@ -37,6 +38,7 @@ class GiftCardResponse {
 
   data.GiftCard toGiftCard() {
     final denominationList = denominations.map((e) => e.toDenomination()).toList();
+    final customDenominationsList = customDenominations?.map((e) => e.toDenomination()).toList();
     return data.GiftCard(id: id,
         vendor: vendor,
         brand: brand,
@@ -47,16 +49,17 @@ class GiftCardResponse {
         terms: terms,
         importantContent: importantContent,
         cardTypeStatus: cardTypeStatus,
-        customDenominations: customDenominations,
+        customDenominations: customDenominationsList,
         disclaimer: disclaimer);
   }
 }
 
 @JsonSerializable()
 class Denomination {
+  @PriceFormatConverter()
   final double price;
-  final String currency;
-  final String stock;
+  final String? currency;
+  final String? stock;
 
   Denomination(this.price, this.currency, this.stock);
 

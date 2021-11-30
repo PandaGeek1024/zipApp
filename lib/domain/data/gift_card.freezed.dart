@@ -28,7 +28,7 @@ class _$GiftCardTearOff {
       required String terms,
       required String importantContent,
       required String cardTypeStatus,
-      required String customDenominations,
+      required List<Denomination>? customDenominations,
       required String disclaimer}) {
     return _GiftCard(
       id: id,
@@ -62,7 +62,8 @@ mixin _$GiftCard {
   String get terms => throw _privateConstructorUsedError;
   String get importantContent => throw _privateConstructorUsedError;
   String get cardTypeStatus => throw _privateConstructorUsedError;
-  String get customDenominations => throw _privateConstructorUsedError;
+  List<Denomination>? get customDenominations =>
+      throw _privateConstructorUsedError;
   String get disclaimer => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -85,7 +86,7 @@ abstract class $GiftCardCopyWith<$Res> {
       String terms,
       String importantContent,
       String cardTypeStatus,
-      String customDenominations,
+      List<Denomination>? customDenominations,
       String disclaimer});
 }
 
@@ -156,7 +157,7 @@ class _$GiftCardCopyWithImpl<$Res> implements $GiftCardCopyWith<$Res> {
       customDenominations: customDenominations == freezed
           ? _value.customDenominations
           : customDenominations // ignore: cast_nullable_to_non_nullable
-              as String,
+              as List<Denomination>?,
       disclaimer: disclaimer == freezed
           ? _value.disclaimer
           : disclaimer // ignore: cast_nullable_to_non_nullable
@@ -181,7 +182,7 @@ abstract class _$GiftCardCopyWith<$Res> implements $GiftCardCopyWith<$Res> {
       String terms,
       String importantContent,
       String cardTypeStatus,
-      String customDenominations,
+      List<Denomination>? customDenominations,
       String disclaimer});
 }
 
@@ -253,7 +254,7 @@ class __$GiftCardCopyWithImpl<$Res> extends _$GiftCardCopyWithImpl<$Res>
       customDenominations: customDenominations == freezed
           ? _value.customDenominations
           : customDenominations // ignore: cast_nullable_to_non_nullable
-              as String,
+              as List<Denomination>?,
       disclaimer: disclaimer == freezed
           ? _value.disclaimer
           : disclaimer // ignore: cast_nullable_to_non_nullable
@@ -301,7 +302,7 @@ class _$_GiftCard extends _GiftCard {
   @override
   final String cardTypeStatus;
   @override
-  final String customDenominations;
+  final List<Denomination>? customDenominations;
   @override
   final String disclaimer;
 
@@ -330,8 +331,8 @@ class _$_GiftCard extends _GiftCard {
                 other.importantContent == importantContent) &&
             (identical(other.cardTypeStatus, cardTypeStatus) ||
                 other.cardTypeStatus == cardTypeStatus) &&
-            (identical(other.customDenominations, customDenominations) ||
-                other.customDenominations == customDenominations) &&
+            const DeepCollectionEquality()
+                .equals(other.customDenominations, customDenominations) &&
             (identical(other.disclaimer, disclaimer) ||
                 other.disclaimer == disclaimer));
   }
@@ -349,7 +350,7 @@ class _$_GiftCard extends _GiftCard {
       terms,
       importantContent,
       cardTypeStatus,
-      customDenominations,
+      const DeepCollectionEquality().hash(customDenominations),
       disclaimer);
 
   @JsonKey(ignore: true)
@@ -370,7 +371,7 @@ abstract class _GiftCard extends GiftCard {
       required String terms,
       required String importantContent,
       required String cardTypeStatus,
-      required String customDenominations,
+      required List<Denomination>? customDenominations,
       required String disclaimer}) = _$_GiftCard;
   _GiftCard._() : super._();
 
@@ -395,7 +396,7 @@ abstract class _GiftCard extends GiftCard {
   @override
   String get cardTypeStatus;
   @override
-  String get customDenominations;
+  List<Denomination>? get customDenominations;
   @override
   String get disclaimer;
   @override
@@ -408,10 +409,7 @@ abstract class _GiftCard extends GiftCard {
 class _$DenominationTearOff {
   const _$DenominationTearOff();
 
-  _Denomination call(
-      {required double price,
-      required String currency,
-      required String stock}) {
+  _Denomination call({required double price, String? currency, String? stock}) {
     return _Denomination(
       price: price,
       currency: currency,
@@ -426,8 +424,8 @@ const $Denomination = _$DenominationTearOff();
 /// @nodoc
 mixin _$Denomination {
   double get price => throw _privateConstructorUsedError;
-  String get currency => throw _privateConstructorUsedError;
-  String get stock => throw _privateConstructorUsedError;
+  String? get currency => throw _privateConstructorUsedError;
+  String? get stock => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DenominationCopyWith<Denomination> get copyWith =>
@@ -439,7 +437,7 @@ abstract class $DenominationCopyWith<$Res> {
   factory $DenominationCopyWith(
           Denomination value, $Res Function(Denomination) then) =
       _$DenominationCopyWithImpl<$Res>;
-  $Res call({double price, String currency, String stock});
+  $Res call({double price, String? currency, String? stock});
 }
 
 /// @nodoc
@@ -464,11 +462,11 @@ class _$DenominationCopyWithImpl<$Res> implements $DenominationCopyWith<$Res> {
       currency: currency == freezed
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       stock: stock == freezed
           ? _value.stock
           : stock // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -480,7 +478,7 @@ abstract class _$DenominationCopyWith<$Res>
           _Denomination value, $Res Function(_Denomination) then) =
       __$DenominationCopyWithImpl<$Res>;
   @override
-  $Res call({double price, String currency, String stock});
+  $Res call({double price, String? currency, String? stock});
 }
 
 /// @nodoc
@@ -507,11 +505,11 @@ class __$DenominationCopyWithImpl<$Res> extends _$DenominationCopyWithImpl<$Res>
       currency: currency == freezed
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       stock: stock == freezed
           ? _value.stock
           : stock // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -519,16 +517,14 @@ class __$DenominationCopyWithImpl<$Res> extends _$DenominationCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Denomination extends _Denomination {
-  _$_Denomination(
-      {required this.price, required this.currency, required this.stock})
-      : super._();
+  _$_Denomination({required this.price, this.currency, this.stock}) : super._();
 
   @override
   final double price;
   @override
-  final String currency;
+  final String? currency;
   @override
-  final String stock;
+  final String? stock;
 
   @override
   String toString() {
@@ -558,16 +554,16 @@ class _$_Denomination extends _Denomination {
 abstract class _Denomination extends Denomination {
   factory _Denomination(
       {required double price,
-      required String currency,
-      required String stock}) = _$_Denomination;
+      String? currency,
+      String? stock}) = _$_Denomination;
   _Denomination._() : super._();
 
   @override
   double get price;
   @override
-  String get currency;
+  String? get currency;
   @override
-  String get stock;
+  String? get stock;
   @override
   @JsonKey(ignore: true)
   _$DenominationCopyWith<_Denomination> get copyWith =>
