@@ -36,13 +36,15 @@ class DetailScreen extends StatelessWidget {
                       builder: (context) => const SuccessScreen()));
             },
             child: const Text('buy now')),
-        ElevatedButton(onPressed: () {
-          context.read<CartViewModel>().add(item);
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            content: Text("Item added to cart."),
-            duration: Duration(seconds: 3),
-          ));
-        }, child: const Text('add to cart')),
+        ElevatedButton(
+            onPressed: () {
+              context.read<CartViewModel>().add(item);
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                content: Text("Item added to cart."),
+                duration: Duration(seconds: 3),
+              ));
+            },
+            child: const Text('add to cart')),
       ],
     );
   }

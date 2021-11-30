@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/src/provider.dart';
 import 'package:zip_app/presentation/ui/success_screen.dart';
 import 'package:zip_app/presentation/viewmodel/cart_viewmodel.dart';
-import 'package:zip_app/presentation/viewmodel/cart_viewmodel.dart';
 
 class ShoppingCardScreen extends StatefulWidget {
   const ShoppingCardScreen({Key? key}) : super(key: key);

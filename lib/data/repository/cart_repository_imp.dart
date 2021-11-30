@@ -6,5 +6,4 @@ class CartRepositoryImpl implements CartRepository {
   Future<void> checkout(List<GiftCard> items) async {
     //TODO mock checkout behaviour.
   }
-
 }

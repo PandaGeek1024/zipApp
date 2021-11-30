@@ -19,7 +19,8 @@ class GiftCardResponse {
   final List<Denomination>? customDenominations;
   final String disclaimer;
 
-  GiftCardResponse(this.id,
+  GiftCardResponse(
+      this.id,
       this.vendor,
       this.brand,
       this.image,
@@ -39,7 +40,8 @@ class GiftCardResponse {
   data.GiftCard toGiftCard() {
     final denominationList = denominations.map((e) => e.toDenomination()).toList();
     final customDenominationsList = customDenominations?.map((e) => e.toDenomination()).toList();
-    return data.GiftCard(id: id,
+    return data.GiftCard(
+        id: id,
         vendor: vendor,
         brand: brand,
         image: image,

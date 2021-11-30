@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:zip_app/data/api/gift_card_api.dart';
@@ -31,5 +30,4 @@ class GiftCardDataSourceImpl implements GiftCardDataSource {
       throw Exception('Network call failed.');
     }
   }
-
 }

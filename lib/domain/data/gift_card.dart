@@ -23,8 +23,7 @@ class GiftCard with _$GiftCard {
 
 @freezed
 class Denomination with _$Denomination {
-  factory Denomination({required double price, String? currency, String? stock}) =
-      _Denomination;
+  factory Denomination({required double price, String? currency, String? stock}) = _Denomination;
 
   const Denomination._();
 }

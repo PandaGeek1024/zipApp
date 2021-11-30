@@ -23,13 +23,6 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       length: 2,
       vsync: this,
     );
-    // _tabController.addListener(() {
-    //   // When the tab controller's value is updated, make sure to update the
-    //   // tab index value, which is state restorable.
-    //   setState(() {
-    //     tabIndex.value = _tabController.index;
-    //   });
-    // });
   }
 
   @override

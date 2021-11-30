@@ -8,7 +8,7 @@ class GiftCardApiServiceImpl implements GiftCardApiService {
   final Dio client;
 
   GiftCardApiServiceImpl(this.client);
+
   @override
   Future<Response> fetchAllGiftCards() => client.get('giftcards');
-
 }
