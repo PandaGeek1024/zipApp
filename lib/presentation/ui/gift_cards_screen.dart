@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/src/provider.dart';
 import 'package:zip_app/presentation/viewmodel/gift_cards_viewmodel.dart';
 
+import 'detail_screen.dart';
+
 // Width and height for thumbnail images.
 const mobileThumbnailSize = 60.0;
 
@@ -30,13 +32,26 @@ class GiftCardsScreen extends StatelessWidget {
             ),
             title: Text(item.brand),
             subtitle: Text(item.vendor),
-            trailing: Row(mainAxisSize: MainAxisSize.min, children: [
-              Text(item.discount.toString()),
-              const SizedBox(width: 4,),
-              ElevatedButton(onPressed: () {
-
-              }, child: const Text('detail'))
-            ],),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(item.discount.toString()),
+                const SizedBox(
+                  width: 4,
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              settings: const RouteSettings(name: "/detail"),
+                              builder: (context) => DetailScreen(
+                                    item: item,
+                                  )));
+                    },
+                    child: const Text('detail'))
+              ],
+            ),
           );
         },
         separatorBuilder: (BuildContext context, int index) {
