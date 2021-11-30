@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => GiftCardViewModel(injection.injector())),
         ChangeNotifierProxyProvider<GiftCardViewModel, CartViewModel>(
-          create: (context) => CartViewModel(),
+          create: (context) => CartViewModel(injection.injector()),
           update: (context, giftCardsViewModel, cart) {
             if (cart == null) throw ArgumentError.notNull('cart');
             cart.giftCards = giftCardsViewModel.giftCards;

@@ -6,7 +6,6 @@ import 'package:zip_app/presentation/viewmodel/gift_cards_viewmodel.dart';
 
 import 'detail_screen.dart';
 
-// Width and height for thumbnail images.
 const mobileThumbnailSize = 60.0;
 
 class GiftCardsScreen extends StatelessWidget {

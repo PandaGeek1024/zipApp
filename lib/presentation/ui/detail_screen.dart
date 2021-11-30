@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/src/provider.dart';
 import 'package:zip_app/domain/data/gift_card.dart';
 import 'package:zip_app/presentation/ui/success_screen.dart';
+import 'package:zip_app/presentation/viewmodel/cart_viewmodel.dart';
 
 class DetailScreen extends StatelessWidget {
   final GiftCard item;
@@ -30,11 +32,17 @@ class DetailScreen extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       fullscreenDialog: true,
-                      settings: const RouteSettings(name: "/detail"),
-                      builder: (context) => SuccessScreen()));
+                      settings: const RouteSettings(name: "/success"),
+                      builder: (context) => const SuccessScreen()));
             },
             child: const Text('buy now')),
-        ElevatedButton(onPressed: () {}, child: const Text('add to cart')),
+        ElevatedButton(onPressed: () {
+          context.read<CartViewModel>().add(item);
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text("Item added to cart."),
+            duration: Duration(seconds: 3),
+          ));
+        }, child: const Text('add to cart')),
       ],
     );
   }

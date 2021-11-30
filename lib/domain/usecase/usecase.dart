@@ -14,7 +14,7 @@ class GeneralFailure extends Failure {
 }
 
 class NoParams{}
-
+class Any {}
 
 abstract class UseCase<Params, Type> {
   Future<Either<Failure, Type>> call(Params params);
