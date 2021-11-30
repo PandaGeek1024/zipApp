@@ -4,7 +4,7 @@ part 'gift_card.freezed.dart';
 
 @freezed
 class GiftCard with _$GiftCard {
-  factory GiftCard(
+  const factory GiftCard(
       {required String id,
       required String vendor,
       required String brand,

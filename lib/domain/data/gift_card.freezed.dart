@@ -266,7 +266,7 @@ class __$GiftCardCopyWithImpl<$Res> extends _$GiftCardCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_GiftCard extends _GiftCard {
-  _$_GiftCard(
+  const _$_GiftCard(
       {required this.id,
       required this.vendor,
       required this.brand,
@@ -360,7 +360,7 @@ class _$_GiftCard extends _GiftCard {
 }
 
 abstract class _GiftCard extends GiftCard {
-  factory _GiftCard(
+  const factory _GiftCard(
       {required String id,
       required String vendor,
       required String brand,
@@ -373,7 +373,7 @@ abstract class _GiftCard extends GiftCard {
       required String cardTypeStatus,
       required List<Denomination>? customDenominations,
       required String disclaimer}) = _$_GiftCard;
-  _GiftCard._() : super._();
+  const _GiftCard._() : super._();
 
   @override
   String get id;
